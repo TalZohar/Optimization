@@ -10,12 +10,13 @@ ARMIJO_ALPHA_0 = 1
 ARMIJO_BETA = 0.5
 ARMIJO_SIGMA = 0.25
 CURVATURE_CONDITION_C = 0.9
+STOPPING_EPSILON = 10 ** -5
 
 
 def stopping_condition(func: Function, x) -> bool:
     gradient = func.g(x)
     norm = np.linalg.norm(gradient)
-    return norm < 10 ** -5
+    return norm < STOPPING_EPSILON
 
 
 def armijo_condition(func: Function, x, alpha: float, sigma: float, direction) -> bool:
